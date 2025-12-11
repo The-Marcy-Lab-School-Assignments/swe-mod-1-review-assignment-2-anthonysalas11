@@ -8,15 +8,15 @@ const team2 = {...team1};
 team2.wins = 50;
 team2.losses = 15;
 
-console.log(team1.wins)
-console.log(team1.losses)
-
+//console.log(team1.wins)
+//console.log(team1.losses)
+console.log(team1, team2)
 /* 
 Part A: What will team1.wins and team1.losses be after this code runs? Write your prediction as a comment below:
 
 - Prediction:
 - I predict that team1.wins will resolve to 50 and teams2.losses will resolve to 15
-because both team1 and team2 are referencing the same object stored in memory
+because both team1 and team2 are referencing the same object stored in heap memory
 
 
 

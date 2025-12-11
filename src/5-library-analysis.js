@@ -26,14 +26,10 @@ const popularBookTitles = books.filter((book) => book.checkouts > 50).map((book)
 
 // // E: Use reduce to find the highest number of checkouts any single book has received. Store this in a variable called `mostCheckouts`.
 // // Hint: Start with 0 and compare each book's checkouts to your accumulator. If the book's checkouts are higher, return that number; otherwise, return the current accumulator.
-// const mostCheckouts = books.reduce((max, currBook) => {
-//   if (currBook.checkouts > acc){
-//     return currBook.checkouts
-//   }else {
-//     return max
-//   }
-// },0) 
-// 
+ const mostCheckouts = books.reduce((acc,currVal) => , 0)
+
+ 
+ 
 
 
 
