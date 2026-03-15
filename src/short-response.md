@@ -27,18 +27,17 @@ Part B: How would you modify the code so that reassigning `playlist2.songCount` 
 
 ### Response 1
 
-Part A Response: I predict that when we console.log `playlist1.songCount` we will get `15`.This is because `playlist1` is stored into the `playlist2` variable.So whenever one is updated its counterpart will also change since both these variables are referencing the same object stored in the heap memory.
+**Part A:** `15` will be logged. In JavaScript, objects are stored by reference, so `playlist2 = playlist1` does not create a new object — both variables point to the same object in memory. Mutating `playlist2.songCount` therefore mutates the original.
 
-Part B Response: Instead of making `playlist2` directly equal to `playlist1` we can put playlist1 inside of a spread operator to make a shallow copy of playlist1 and then store that into playlist2
+**Part B:** Use the spread operator (`...`) to create a shallow copy of `playlist1`, so `playlist2` becomes an independent object.
 
 **Corrected Code:**
 
 ```js
-// fix this!
 const playlist1 = { name: "My Favorites", songCount: 10 };
 const playlist2 = { ...playlist1 };
 playlist2.songCount = 15;
-console.log(playlist1.songCount);
+console.log(playlist1.songCount); // 10
 ```
 
 ---
@@ -63,7 +62,13 @@ For each task below, identify which array method (forEach, filter, map, find, or
 
 ### Response 2
 
-Your response...
+1. `filter` would return a new array with elements that meet a specified condition.
+
+2. `find` would return the first element that matches the condition needed, giving a reference to Destiny's object allowing her grade to be updated directly.
+
+3. `reduce` accumulates all grades into a single sum, which is then divided by `students.length` giving us the average.
+
+4. `map` transforms each element into a new value, producing a new array of formatted strings like `"Maya: 92"`.
 
 ---
 
@@ -85,7 +90,7 @@ console.log(upperCaseLetters);
 
 ### Response 3
 
-Your response...
+The error occurs because `capitalize()` is being invoked with parentheses instead of being passed as a reference. `map` expects a callback function to call on each element, but `capitalize()` executes right away with no argument, leaving `str` as `undefined` — causing `undefined.toUpperCase()` to throw a `TypeError`. To fix it, remove the parentheses: `letters.map(capitalize)`. As a rule of thumb, if you find yourself writing `.map(fn())`, that's a signal you're invoking the function rather than passing it.
 
 ---
 
@@ -114,4 +119,8 @@ const grandTotal = orders.reduce((sum, order) => {
 
 ### Response 4
 
-Your response...
+**Part A:** `grandTotal` will equal `135` (45 + 23 + 67).
+
+**Part B:** The `0` is the initial value of the accumulator (`sum`). Without it, `reduce` uses the first element of the array as the starting accumulator — which would be the object `{ id: 1, total: 45 }` rather than a number, causing incorrect results. Providing `0` ensures `sum` starts as a number.
+
+**Part C:** In the first iteration, `sum` is `0` (the initial value passed to `reduce`) and `order` is the first object in the array, `{ id: 1, total: 45 }`. The callback returns `45`, which becomes the new value of `sum` in the next iteration.
